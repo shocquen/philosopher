@@ -6,7 +6,7 @@
 /*   By: shocquen <shocquen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 11:17:36 by shocquen          #+#    #+#             */
-/*   Updated: 2022/02/24 14:26:30 by shocquen         ###   ########.fr       */
+/*   Updated: 2022/02/24 19:34:56 by shocquen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ t_rules	init_rules(char **argv)
 {
 	t_rules	new;
 
+	memset(&new, 0, sizeof(new));
 	new.nb_philos = ft_atoi(argv[1]);
 	new.tm_die = ft_atoi(argv[2]);
 	new.tm_eat = ft_atoi(argv[3]);
@@ -32,6 +33,6 @@ t_game	*init_game(void)
 
 	game = (t_game *)malloc(sizeof(*game));
 	if (game)
-		memset(game, 0, 2);
+		memset(game, 0, sizeof(*game));
 	return (game);
 }

@@ -6,7 +6,7 @@
 /*   By: shocquen <shocquen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 17:38:05 by shocquen          #+#    #+#             */
-/*   Updated: 2022/02/24 18:36:40 by shocquen         ###   ########.fr       */
+/*   Updated: 2022/02/24 19:31:57 by shocquen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	ft_lstadd_back(t_lst **lst, t_lst *new)
 {
 	t_lst	*tmp;
 
+	tmp = NULL;
 	tmp = *lst;
 	if (!tmp)
 		*lst = new;
