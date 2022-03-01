@@ -6,7 +6,7 @@
 #    By: shocquen <shocquen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/23 09:28:22 by shocquen          #+#    #+#              #
-#    Updated: 2022/02/24 18:48:05 by shocquen         ###   ########.fr        #
+#    Updated: 2022/03/01 14:47:55 by shocquen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -99,9 +99,9 @@ INC		= ./includes
 
 NAME		= philo
 RM			= rm -f
-CC			= gcc
+CC			= cc
 AR			= ar -rcs
-CFLAGS		= -Wall -Wextra -Werror -g
+CFLAGS		= -Wall -Wextra -Werror -pthread -g
 
 ${NAME}:	signe $(addprefix obj/, $(OBJS))
 			$(call building,libft) 
@@ -114,11 +114,9 @@ obj/%.o:	src/%.c
 all:	 $(NAME)
 
 clean:	
-			$(call cleaning,libft,clean)
 			$(call removing,$(addprefix obj/, $(OBJS)))
 
 fclean:		clean
-			$(call cleaning,libft,fclean)
 			$(call removing,$(NAME))
 
 re:			fclean all
