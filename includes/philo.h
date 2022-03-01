@@ -6,7 +6,7 @@
 /*   By: shocquen <shocquen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 17:33:40 by shocquen          #+#    #+#             */
-/*   Updated: 2022/02/24 19:07:11 by shocquen         ###   ########.fr       */
+/*   Updated: 2022/03/01 15:31:14 by shocquen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <sys/time.h>
+# include <pthread.h>
 
 /* Colors */
 # define CRED "\033[0;31m"
@@ -31,6 +32,7 @@
 # define SLEEP 2
 # define PHI 3
 
+typedef struct timeval	t_time;
 /* List */
 typedef struct s_lst
 {
@@ -69,6 +71,8 @@ typedef struct s_philo
 	unsigned int	index;
 	int				state;
 	int				fork;
+	pthread_t		th;
+	t_time			time;
 }	t_philo;
 
 t_philo			*philonew(unsigned int index);
@@ -85,6 +89,6 @@ void			launch_game(t_game *game);
 
 /* TEST */
 void			pgame(t_game *game);
-void			pphilo(void *philo);
+void			*pphilo(void *philo);
 
 #endif

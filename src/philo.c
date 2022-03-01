@@ -6,7 +6,7 @@
 /*   By: shocquen <shocquen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 10:40:51 by shocquen          #+#    #+#             */
-/*   Updated: 2022/02/24 18:31:27 by shocquen         ###   ########.fr       */
+/*   Updated: 2022/03/01 15:35:59 by shocquen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,10 @@ t_philo	*philonew(unsigned int index)
 	new = (t_philo *)malloc(sizeof(*new));
 	if (new)
 	{
+		memset(new, 0, sizeof(*new));
 		new->index = index;
-		new->fork = 0;
 		new->state = PHI;
+		gettimeofday(&new->time, NULL);
 	}
 	return (new);
 }
