@@ -6,7 +6,7 @@
 /*   By: shocquen <shocquen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 10:40:51 by shocquen          #+#    #+#             */
-/*   Updated: 2022/03/01 15:35:59 by shocquen         ###   ########.fr       */
+/*   Updated: 2022/03/01 17:39:13 by shocquen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_philo	*philonew(unsigned int index)
 		memset(new, 0, sizeof(*new));
 		new->index = index;
 		new->state = PHI;
-		gettimeofday(&new->time, NULL);
+		gettimeofday(&new->birth, NULL);
 	}
 	return (new);
 }

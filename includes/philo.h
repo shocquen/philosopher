@@ -6,7 +6,7 @@
 /*   By: shocquen <shocquen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 17:33:40 by shocquen          #+#    #+#             */
-/*   Updated: 2022/03/01 15:31:14 by shocquen         ###   ########.fr       */
+/*   Updated: 2022/03/02 14:34:54 by shocquen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ typedef struct s_game
 {
 	t_rules	rules;
 	t_lst	*philos;
+	t_time	start;
 }	t_game;
 
 t_rules			init_rules(char **argv);
@@ -72,7 +73,7 @@ typedef struct s_philo
 	int				state;
 	int				fork;
 	pthread_t		th;
-	t_time			time;
+	t_time			birth;
 }	t_philo;
 
 t_philo			*philonew(unsigned int index);
@@ -90,5 +91,7 @@ void			launch_game(t_game *game);
 /* TEST */
 void			pgame(t_game *game);
 void			*pphilo(void *philo);
+float			time_diff(struct timeval *start, struct timeval *end);
+float			show_time(struct timeval *start);
 
 #endif

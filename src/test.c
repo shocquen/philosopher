@@ -6,7 +6,7 @@
 /*   By: shocquen <shocquen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 12:03:03 by shocquen          #+#    #+#             */
-/*   Updated: 2022/03/01 15:42:06 by shocquen         ###   ########.fr       */
+/*   Updated: 2022/03/02 14:33:44 by shocquen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,11 @@ void	*pphilo(void *philo)
 		"\tPhilo->index: "CYLW"%d\n"CNO
 		"\tPhilo->state: "CYLW"%d\n"CNO
 		"\tPhilo->fork: "CYLW"%d\n"CNO
-		"\tPhilo->time: "CYLW"%ld\n"CNO
-		"\tNow: "CYLW"%ld\n"CNO
-		"\tDelta: "CYLW"%ld\n\n"CNO,
+		"\tDelta: "CYLW"%0.8f\n\n"CNO,
 		((t_philo *)philo)->index,
 		((t_philo *)philo)->state,
 		((t_philo *)philo)->fork,
-		((t_philo *)philo)->time.tv_usec,
-		now.tv_usec,
-		(now.tv_usec - ((t_philo *)philo)->time.tv_usec) / 10
+		time_diff(&((t_philo *)philo)->birth, &now)
 		);
 	usleep(500000);
 	return (NULL);
@@ -65,4 +61,15 @@ void	pgame(t_game *game)
 		);
 	tmp = game->philos;
 	ft_lstiter(tmp, &pphilo, game->rules.nb_philos);
+}
+
+float	time_diff(struct timeval *start, struct timeval *end)
+{
+	return ((end->tv_sec - start->tv_sec) + (1e-6)
+		* (end->tv_usec - start->tv_usec));
+}
+
+float	show_time(struct timeval *start)
+{
+	return ((start->tv_sec) + (1e-6) * (start->tv_usec));
 }

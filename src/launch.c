@@ -6,7 +6,7 @@
 /*   By: shocquen <shocquen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 18:48:12 by shocquen          #+#    #+#             */
-/*   Updated: 2022/03/01 15:03:52 by shocquen         ###   ########.fr       */
+/*   Updated: 2022/03/02 14:36:41 by shocquen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 void	launch_game(t_game *game)
 {
-	t_time			time[3];
+	t_time			now;
 	t_philo			*philo;
 	int				i;
 
-	memset(time, 0, sizeof(*time));
 	pgame(game);
 	printf(CGRN"============START============\n"CNO);
-	gettimeofday(&time[0], NULL);
-	printf("start time: "CYLW"%ld\n\n"CNO, time[0].tv_usec);
+	gettimeofday(&now, NULL);
+	printf("game init at: "CYLW"%0.8f\n"CNO, show_time(&game->start));
+	printf("now: "CYLW"%0.8f\n\n"CNO, show_time(&now));
 	i = 0;
 	while (((t_philo *)game->philos->content)->state != DEAD)
 	{
@@ -33,9 +33,9 @@ void	launch_game(t_game *game)
 		pthread_join(philo->th, NULL);
 		game->philos = game->philos->next;
 	}
-	gettimeofday(&time[1], NULL);
-	printf("end time: "CYLW"%ld\n"CNO, time[1].tv_usec);
-	printf("delta: "CYLW"%ld\n"CNO, time[1].tv_usec - time[0].tv_usec);
+	gettimeofday(&now, NULL);
+	printf("end time: "CYLW"%0.8f\n"CNO, show_time(&now));
+	printf("delta: "CYLW"%0.8f\n"CNO, time_diff(&game->start, &now));
 }
 
 /* void	launch_game(t_game *game)

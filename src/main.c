@@ -6,7 +6,7 @@
 /*   By: shocquen <shocquen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 17:57:57 by shocquen          #+#    #+#             */
-/*   Updated: 2022/02/24 18:50:08 by shocquen         ###   ########.fr       */
+/*   Updated: 2022/03/01 17:41:08 by shocquen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	main(int argc, char **argv)
 	if (!game)
 		return (1);
 	game->rules = init_rules(argv);
+	gettimeofday(&game->start, NULL);
 	generate_philos(&game);
 	launch_game(game);
 	ft_lstclear(&game->philos, free, game->rules.nb_philos);
