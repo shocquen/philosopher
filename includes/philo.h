@@ -6,7 +6,7 @@
 /*   By: shocquen <shocquen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 17:33:40 by shocquen          #+#    #+#             */
-/*   Updated: 2022/03/02 14:34:54 by shocquen         ###   ########.fr       */
+/*   Updated: 2022/03/05 11:01:34 by shocquen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ int				check_args(int argc, char **argv);
 
 /* Utils */
 unsigned int	ft_atoi(const char *str);
+void			ft_usleep(unsigned int time);
 
 /* Launch */
 void			launch_game(t_game *game);

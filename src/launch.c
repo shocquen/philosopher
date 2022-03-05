@@ -6,7 +6,7 @@
 /*   By: shocquen <shocquen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 18:48:12 by shocquen          #+#    #+#             */
-/*   Updated: 2022/03/02 14:36:41 by shocquen         ###   ########.fr       */
+/*   Updated: 2022/03/05 10:17:50 by shocquen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	launch_game(t_game *game)
 {
 	t_time			now;
 	t_philo			*philo;
-	int				i;
+	unsigned int				i;
 
 	pgame(game);
 	printf(CGRN"============START============\n"CNO);
@@ -24,12 +24,17 @@ void	launch_game(t_game *game)
 	printf("game init at: "CYLW"%0.8f\n"CNO, show_time(&game->start));
 	printf("now: "CYLW"%0.8f\n\n"CNO, show_time(&now));
 	i = 0;
-	while (((t_philo *)game->philos->content)->state != DEAD)
+	while (i++ < game->rules.nb_philos)
 	{
 		philo = (t_philo *)game->philos->content;
-		if (i++ >= 3)
-			((t_philo *)game->philos->content)->state = DEAD;
 		pthread_create(&philo->th, NULL, pphilo, philo);
+		pthread_join(philo->th, NULL);
+		game->philos = game->philos->next;
+	}
+	i = 0;
+	while (i++ < game->rules.nb_philos)
+	{
+		philo = (t_philo *)game->philos->content;
 		pthread_join(philo->th, NULL);
 		game->philos = game->philos->next;
 	}
