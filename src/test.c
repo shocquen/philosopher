@@ -6,7 +6,7 @@
 /*   By: shocquen <shocquen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 12:03:03 by shocquen          #+#    #+#             */
-/*   Updated: 2022/03/05 11:02:03 by shocquen         ###   ########.fr       */
+/*   Updated: 2022/03/11 10:20:04 by shocquen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	*pphilo(void *philo)
 		((t_philo *)philo)->fork,
 		time_diff(&((t_philo *)philo)->birth, &now)
 		);
-	ft_usleep(500000);
+	usleep(500000);
 	return (NULL);
 }
 

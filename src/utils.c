@@ -6,7 +6,7 @@
 /*   By: shocquen <shocquen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 10:29:57 by shocquen          #+#    #+#             */
-/*   Updated: 2022/03/05 11:03:33 by shocquen         ###   ########.fr       */
+/*   Updated: 2022/03/11 10:19:39 by shocquen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,19 +27,4 @@ unsigned int	ft_atoi(const char *str)
 		str++;
 	}
 	return (nb);
-}
-
-void	ft_usleep(unsigned int time)
-{
-	t_time	now;
-	t_time	comp;
-
-	gettimeofday(&now, NULL);
-	gettimeofday(&comp, NULL);
-	while (now.tv_usec - comp.tv_usec < time)
-	{
-		gettimeofday(&comp, NULL);
-		usleep(50);
-		printf("test: %d\n", now.tv_usec - comp.tv_usec < time);
-	}
 }
